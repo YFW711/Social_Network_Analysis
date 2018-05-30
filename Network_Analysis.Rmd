@@ -72,6 +72,7 @@ for(i in 1:1000){
                               p.or.m = edge_density(g3), 
                               type = "gnp")
 }
+head(g_list)
 ```
 
 
