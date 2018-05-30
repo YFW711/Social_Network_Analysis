@@ -58,10 +58,6 @@ plot(g3[[1]])
 #### Use the file club.csv to compute the average path length for the network graph.
 
 ``` r
-club <- read.csv("/Users/wangevan/Google Drive/GitHub_Open/Social_Network_Analysis/DataFiles (2)/club.csv")
-```
-
-``` r
 g3 <- graph_from_data_frame(club,directed =  FALSE)
 
 mean_distance(g3)
@@ -99,4 +95,4 @@ abline(v = mean_distance(g3), col = "red", lty = 3, lwd = 2)
 sum(g3.apls < mean_distance(g3, directed = FALSE))/1000
 ```
 
-    ## [1] 0.866
+    ## [1] 0.864

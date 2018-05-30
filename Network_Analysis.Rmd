@@ -52,7 +52,7 @@ plot(g3[[1]])
 
 ### Practice 3
 #### Use  the  file club.csv to  compute  the  average  path  length  for  the  network  graph. 
-```{r }
+```{r include=FALSE}
 club <- read.csv("/Users/wangevan/Google Drive/GitHub_Open/Social_Network_Analysis/DataFiles (2)/club.csv")
 ```
 
