@@ -7,14 +7,14 @@
 
 ```{r include=FALSE}
 library(igraph)
-setwd("/Users/wangevan/Google Drive/UMN MSBA/Spring 2018/Simulation/DataFiles (2)")
+#setwd("/Users/wangevan/Google Drive/GitHub_Open/Social_Network_Analysis/DataFiles (2)")
 
-gamers <-  read.csv("gamers.csv")
-gamers_age <-  read.csv("gamers-age.csv")
+gamers <-  read.csv("/Users/wangevan/Google Drive/GitHub_Open/Social_Network_Analysis/DataFiles (2)/gamers.csv")
+gamers_age <-  read.csv("/Users/wangevan/Google Drive/GitHub_Open/Social_Network_Analysis/DataFiles (2)/gamers-age.csv")
 ```
 
 
-# Use  the  file gamers.csv to  compute  the  betweenness  centrality  of  the  different vertices.  
+### Use  the  file gamers.csv to  compute  the  betweenness  centrality  of  the  different vertices.  
 ```{r}
 g <- graph_from_data_frame(gamers,
                            directed = FALSE)
@@ -22,10 +22,10 @@ plot(g)
 
 betweenness(g)
 ```
-# Then  use  edge  betweenness algorithm  for  community  detection  and  plot  the  resulting network 
-# graph showing the different communities. 
+### Then  use  edge  betweenness algorithm  for  community  detection  and  plot  the  resulting network 
+#### 1. graph showing the different communities. 
 
-# The size of the vertices in your plot should be proportional to their betweenness centrality score.
+#### 2. The size of the vertices in your plot should be proportional to their betweenness centrality score.
 ```{r}
 ebc <- edge.betweenness.community(g)
 plot(ebc,
@@ -34,11 +34,12 @@ plot(ebc,
 ```
 
 
-# Use the Forrest Gump dataset in the file ForestGump.csv, make a plot of the ego graph for Lieutenant Dan Taylor 
+### Use the Forrest Gump dataset in the file ForestGump.csv, make a plot of the ego graph for Lieutenant Dan Taylor 
 
-# (vertex name "LT DAN" in the data set) of order 1 (i.e., one hop) and compute the edge density of the resulting ego graph.
+###  (vertex name "LT DAN" in the data set) of order 1 (i.e., one hop) and compute the edge density of the resulting ego graph.
 ```{r include=FALSE}
-fg <-  read.csv("ForestGump.csv")
+#setwd("/Users/wangevan/Google Drive/UMN MSBA/Spring 2018/Simulation/DataFiles (2)")
+fg <-  read.csv("/Users/wangevan/Google Drive/GitHub_Open/Social_Network_Analysis/DataFiles (2)/ForestGump.csv")
 ```
 
 ```{r }
@@ -49,10 +50,10 @@ g3 <- make_ego_graph(g2,1,"LT DAN",mode = c("all"))
 plot(g3[[1]])
 ```
 
-# Question 3
-# Use  the  file club.csv to  compute  the  average  path  length  for  the  network  graph. 
+### Practice 3
+#### Use  the  file club.csv to  compute  the  average  path  length  for  the  network  graph. 
 ```{r }
-club <- read.csv("club.csv")
+club <- read.csv("/Users/wangevan/Google Drive/GitHub_Open/Social_Network_Analysis/DataFiles (2)/club.csv")
 ```
 
 ```{r }
@@ -62,7 +63,7 @@ mean_distance(g3)
 ```
 
 
-# Create  1000  random  graphs  with  the  same  number  of  vertices  and  similar  edge  density. 
+### Create  1000  random  graphs  with  the  same  number  of  vertices  and  similar  edge  density. 
 ```{r}
 g_list <- vector("list",1000)
 
@@ -74,7 +75,7 @@ for(i in 1:1000){
 ```
 
 
-# Plot  a histogram to show the distribution of the average path lengths in these random graphs and 
+### Plot  a histogram to show the distribution of the average path lengths in these random graphs
 ```{r}
 g3.apls <- unlist(lapply(g_list, mean_distance, directed =  FALSE))
 
@@ -84,8 +85,7 @@ abline(v = mean_distance(g3), col = "red", lty = 3, lwd = 2)
 ```
 
 
-# Calculate the proportion of graphs with an Average Path Length smaller than our 
-# Forrest Gump network
+### Calculate the proportion of graphs with an Average Path Length smaller than our Forrest Gump network
 ```{r}
 sum(g3.apls < mean_distance(g3, directed = FALSE))/1000
 ```
